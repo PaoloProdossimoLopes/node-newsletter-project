@@ -1,10 +1,10 @@
 // Export nescessary dependencies
 const express = require('express');
-const enviromentHelper = require('./helpers/node-enviroment-helper.js');
+const helper = require('./helpers/node-enviroment-helper.js');
 
 // Configure Express
 const application = express();
-enviromentHelper.configureEnviroment(application, express);
+helper.configureEnviroment(application, express);
 
 // Rotas:
 application.get('/', (request, response) => {
@@ -12,8 +12,9 @@ application.get('/', (request, response) => {
 })
 
 application.get('/:slug', (request, response) => {
-    response.status(200).send(`Artigo: ${request.params.slug}`);
+    const slug = request.params.slug;
+    response.status(200).send(`Artigo: ${slug}`);
 })
 
 // Ouvindo a porta 8080
-enviromentHelper.configureListen(application);
+helper.configureListen(application);
