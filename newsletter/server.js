@@ -7,17 +7,13 @@ const application = express();
 enviromentHelper.configureEnviroment(application, express);
 
 // Rotas:
-configureRoute(application);
+application.get('/', (request, response) => {
+    response.status(200).send('Home');
+})
+
+application.get('/:slug', (request, response) => {
+    response.status(200).send(`Artigo: ${request.params.slug}`);
+})
 
 // Ouvindo a porta 8080
 enviromentHelper.configureListen(application);
-
-function configureRoute(application) {
-    application.get('/', (request, response) => {
-        response.send('Home');
-    })
-    
-    application.get('/:slug', (request, response) => {
-        response.send('Artigo:', request.params.slug);
-    })
-}
