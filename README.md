@@ -1,27 +1,27 @@
-#  TITLE
-DESCRIPTION ...
-
-## 🧰 Example:
-```swift
-```
+# 🛰 Newsletter
+This project was create to practice knoledge get on  `danki code` course
 
 ## ℹ️  GETTING STARTED
 ### PREREQUISITES 
-- Swift 4+
-- Xcode 10+
+- NodeJS
+- Express
+- Nodemon
+- Ejs
+- Body-parser
 
 ### INSTALATION
 1. Open your terminal in location that you want save the project.
 2. Clone the repo in this local.
 ```sh
-git clone https://github.com/PaoloProdossimoLopes/repository-template.git
+git clone https://github.com/PaoloProdossimoLopes/node-newsletter-project.git
 ```
 3. Open the file with extension .xcodeproj inside the folder project.
    
 ### RUN
 So that you can run the project follow this steps:
-1. Choose a simulator 
-2. Then click on the **COMMAND + R** keys or press the ▶︎ (icon at the top of the IDE).
+1. Open your terminal
+2. Navigate to inside at `newsletter` folder from terminal
+2. run `node server.js` or using `nodemon server.js`
 
 
 ## 📃 License:
