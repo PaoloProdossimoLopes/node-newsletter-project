@@ -1,0 +1,24 @@
+{
+  "name": "newsletter",
+  "version": "1.0.0",
+  "description": "This project constains the Paolo's newsletter content about Programing lenguages, tips and more.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaoloProdossimoLopes/node-newsletter-project.git"
+  },
+  "keywords": [
+    "node",
+    "newsletter",
+    "articles"
+  ],
+  "author": "Paolo Prodossimo Lopes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaoloProdossimoLopes/node-newsletter-project/issues"
+  },
+  "homepage": "https://github.com/PaoloProdossimoLopes/node-newsletter-project#readme"
+}
