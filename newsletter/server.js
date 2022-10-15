@@ -6,17 +6,18 @@ const enviromentHelper = require('./helpers/node-enviroment-helper.js');
 const application = express();
 enviromentHelper.configureEnviroment(application, express);
 
-//Rotas:
-application.get('/', (request, response) => {
-    response.send('Home')
-})
-
-application.get('/:slug', (request, response) => {
-    console.log('DEBUG:', request.params.slug);
-    response.send('Artigo')
-})
+// Rotas:
+configureRoute(application);
 
 // Ouvindo a porta 8080
-application.listen(8080, () => {
-    console.log('Server is ON!')
-});
+enviromentHelper.configureListen(application);
+
+function configureRoute(application) {
+    application.get('/', (request, response) => {
+        response.send('Home');
+    })
+    
+    application.get('/:slug', (request, response) => {
+        response.send('Artigo:', request.params.slug);
+    })
+}

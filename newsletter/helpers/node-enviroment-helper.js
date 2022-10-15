@@ -18,4 +18,11 @@ function configureEnviroment(application, express) {
     configureJSONParser(application);
 }
 
+function configureListen(application) {
+    const selectedPort = 8080
+    const impriveServerIsOn = console.log('Server is ON!')
+    application.listen(selectedPort, impriveServerIsOn);
+}
+
 exports.configureEnviroment = configureEnviroment;
+exports.configureListen = configureListen;
