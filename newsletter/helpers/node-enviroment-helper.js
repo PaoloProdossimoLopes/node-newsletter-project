@@ -3,8 +3,8 @@ const ejs = require('ejs');
 function configureToRenderHTMLAnsEJS(application, express) {
     application.engine('html', ejs.renderFile);
     application.set('view engine', 'html');
-    application.use('/public', express.static(path.join(__dirname, 'public')));
-    application.set('views', path.join(__dirname, 'views'));
+    application.use('/public', express.static(path.join(__dirname, '../public')));
+    application.set('views', path.join(__dirname, '../pages'));
 }
 
 const parser = require('body-parser');
