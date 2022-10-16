@@ -29,7 +29,7 @@ header {
 
 .form-busca form {
     display: inline-block;
-   
+    max-width: 200px;
     position: relative;
 }
 
@@ -51,6 +51,7 @@ header {
     border: 0;
     font-size: 20px;
     border-radius: 10px;
+    /* width: 100%; */
 }
 
 ::placeholder {
@@ -64,4 +65,43 @@ header {
 
 ::-ms-input-placeholder {
     color: white;
+}
+
+section.noticia-destaque {
+    padding: 40px 0;
+}
+
+section.noticia-destaque > .center {
+    width: 970px;
+}
+
+.img-destaque {
+    width: 100%;
+    position: relative;
+}
+
+.img-destaque img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.title-destaque-descricao {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    max-width: 600px;
+    color: white;
+    z-index: 2;
+}
+
+.overlay-destaque {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 20px;
 }
