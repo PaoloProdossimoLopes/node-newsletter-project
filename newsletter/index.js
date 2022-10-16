@@ -1,56 +1,77 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
-const app = express();
-
 const mongoose = require('mongoose');
-const dataBaseUsername = '{replace_your_usename}'
-const dataBasePassword = '{replace_your_password}'
-const dataBaseName = 'newsletter-dankicode-course'
-const dataBaseURL = `mongodb+srv://${dataBaseUsername}:${dataBasePassword}@cluster0.egdren5.mongodb.net/${dataBaseName}?retryWrites=true&w=majority`
 const Posts = require('./models/Posts.js');
 
-mongoose.connect(dataBaseURL).then((_) => {
-    //Block execute when acess succeds
-    console.log('DEBUG: Conectado com sucesso!');
-}).catch((error) => {
-    //Block execute when access fails
-    console.log(`DEBUG: Erro (${error.message}) ao conectar!`);
-})
+const app = express();
+const dataBaseURL = makeMongoURL();
 
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-})); 
+connectWithMongo(mongoose, dataBaseURL);
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use('/public', express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, '/pages'));
+configureParser(app, bodyParser);
+configureEngineRender(app, express, path);
 
-app.get('/',(req,res)=>{
+configureRoute(app);
+
+configureListen(app);
+
+// Configure application
+function configureParser(application, bodyParser) {
+    application.use(bodyParser.json()); // to support JSON-encoded bodies
+    application.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+      extended: true
+    })); 
+}
+
+function configureEngineRender(application, express, path) {
+    application.engine('html', require('ejs').renderFile);
+    application.set('view engine', 'html');
+    application.use('/public', express.static(path.join(__dirname, 'public')));
+    application.set('views', path.join(__dirname, '/pages'));
+}
+
+function makeMongoURL() {
+    const dataBaseUsername = '{replace_your_usename}';
+    const dataBasePassword = '{replace_your_password}';
+    const dataBaseName = 'newsletter-dankicode-course';
+    const dataBaseURL = `mongodb+srv://${dataBaseUsername}:${dataBasePassword}@cluster0.egdren5.mongodb.net/${dataBaseName}?retryWrites=true&w=majority`;
+    return dataBaseURL;
+}
+
+function connectWithMongo(mongoose, url) {
+    mongoose.connect(url).then((_) => {
+        //Block execute when acess succeds
+        console.log('DEBUG: Conectado com sucesso!');
+    }).catch((error) => {
+        //Block execute when access fails
+        console.log(`DEBUG: Erro (${error.message}) ao conectar!`);
+    })
+}
+
+function configureListen(application) {
+    application.listen(5000, console.log('server rodando!'));
+}
+
+// MARK: - Routes
+function configureRoute(application) {
+    application.get('/',(req,res)=>{
     
-    if(req.query.busca == null){
-
-        Posts.find({}).exec((error, posts) => {
-            console.log(posts[0]);
-        })
-
-        res.render('home',{});
-    }else{
-        res.render('busca',{});
-    }
-});
-
-
-app.get('/:slug',(req,res)=>{
-    //res.send(req.params.slug);
-    res.render('single',{});
-})
-
-
-
-app.listen(5000,()=>{
-    console.log('server rodando!');
-})
+        if(req.query.busca == null){
+    
+            Posts.find({}).exec((error, posts) => {
+                console.log(posts[0]);
+            })
+    
+            res.render('home',{});
+        }else{
+            res.render('busca',{});
+        }
+    });
+    
+    
+    application.get('/:slug',(req,res)=>{
+        //res.send(req.params.slug);
+        res.render('single',{});
+    })
+}
