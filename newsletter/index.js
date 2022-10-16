@@ -55,6 +55,11 @@ function configureListen(application) {
 
 // MARK: - Routes
 function configureRoute(application) {
+    configureHomeRoute(application);
+    configureHomeSluggedRoute(application);
+}
+
+function configureHomeRoute(application) {
     application.get('/',(req,res)=>{
     
         if(req.query.busca == null){
@@ -68,8 +73,9 @@ function configureRoute(application) {
             res.render('busca',{});
         }
     });
-    
-    
+}
+
+function configureHomeSluggedRoute(application) {
     application.get('/:slug',(req,res)=>{
         //res.send(req.params.slug);
         res.render('single',{});
