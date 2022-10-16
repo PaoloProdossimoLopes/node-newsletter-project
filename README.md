@@ -8,6 +8,7 @@ This project was create to practice knoledge get on  `danki code` course
 - Nodemon
 - Ejs
 - Body-parser
+- MongoDB
 
 ### INSTALATION
 1. Open your terminal in location that you want save the project.
