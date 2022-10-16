@@ -1,26 +1,13 @@
 {
-  "name": "newsletter",
+  "name": "portal_noticias_estatico",
   "version": "1.0.0",
-  "description": "This project constains the Paolo's newsletter content about Programing lenguages, tips and more.",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PaoloProdossimoLopes/node-newsletter-project.git"
-  },
-  "keywords": [
-    "node",
-    "newsletter",
-    "articles"
-  ],
-  "author": "Paolo Prodossimo Lopes",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PaoloProdossimoLopes/node-newsletter-project/issues"
-  },
-  "homepage": "https://github.com/PaoloProdossimoLopes/node-newsletter-project#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
