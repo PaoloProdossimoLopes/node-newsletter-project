@@ -16,7 +16,13 @@ This project was create to practice knoledge get on  `danki code` course
 ```sh
 git clone https://github.com/PaoloProdossimoLopes/node-newsletter-project.git
 ```
-3. Open the file with extension .xcodeproj inside the folder project.
+3. install dependencies using this commands
+```sh
+npm install express
+npm install ejs
+npm install body-parser
+npm install mongoose
+```
    
 ### RUN
 So that you can run the project follow this steps:
