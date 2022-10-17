@@ -71,7 +71,7 @@ function configureHomeRoute(application) {
                         titulo: post.titulo,
                         imagem: post.imagem,
                         categoria: post.categoria,
-                        slug: post,
+                        slug: post.slug,
                         conteudo: post.conteudo,
                         conteudoResumido: ignoreHTMLTag(post)
                     }

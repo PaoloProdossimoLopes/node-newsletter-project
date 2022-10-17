@@ -102,7 +102,7 @@ header{
   .img-destaque img{
       width:100%;
       border-radius:20px;
-      
+      max-height: 500px;
   }
 
   .title-destaque-descricao{
