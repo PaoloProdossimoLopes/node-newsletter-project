@@ -32,8 +32,8 @@ function configureEngineRender(application, express, path) {
 }
 
 function makeMongoURL() {
-    const dataBaseUsername = '{replace_your_usename}';
-    const dataBasePassword = '{replace_your_password}';
+    const dataBaseUsername = 'root';
+    const dataBasePassword = 'HS0q4CJsd6pdM0uk';
     const dataBaseName = 'newsletter-dankicode-course';
     const dataBaseURL = `mongodb+srv://${dataBaseUsername}:${dataBasePassword}@cluster0.egdren5.mongodb.net/${dataBaseName}?retryWrites=true&w=majority`;
     return dataBaseURL;
@@ -63,12 +63,22 @@ function configureHomeRoute(application) {
     application.get('/',(req,res)=>{
     
         if(req.query.busca == null){
-    
+            
             Posts.find({}).exec((error, posts) => {
                 console.log(posts[0]);
+                const data = { posts: posts.map((post) => {
+                    return {
+                        titulo: post.titulo,
+                        imagem: post.imagem,
+                        categoria: post.categoria,
+                        slug: post,
+                        conteudo: post.conteudo,
+                        conteudoResumido: ignoreHTMLTag(post)
+                    }
+                }) }
+                res.render('home', data);
             })
-    
-            res.render('home',{});
+            
         }else{
             res.render('busca',{});
         }
@@ -80,4 +90,8 @@ function configureHomeSluggedRoute(application) {
         //res.send(req.params.slug);
         res.render('single',{});
     })
+}
+
+function ignoreHTMLTag(content) {
+    return content.conteudo.substring(3, content.conteudo.length - 4);
 }
